@@ -415,7 +415,7 @@ app.post('/search.:format?', loadUser, function(req, res) {
 });
 
 if (!module.parent) {
-  app.listen(process.env.PORT || 3000);
+  app.listen(process.env.C9_PORT, "0.0.0.0");//|| 3000
   console.log('Express server listening on port %d, environment: %s', app.address().port, app.settings.env)
   console.log('Using connect %s, Express %s, Jade %s', connect.version, express.version, jade.version);
 }
