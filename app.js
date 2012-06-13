@@ -58,16 +58,16 @@ app.helpers(require('./helpers.js').helpers);
 app.dynamicHelpers(require('./helpers.js').dynamicHelpers);
 
 app.configure('development', function() {
-  app.set('db-uri', 'mongodb://localhost/nodepad-development');
+  app.set('db-uri', 'mongodb://heroku_app5200361@ds033907.mongolab.com:33907/heroku_app5200361');///nodepad-development
   app.use(express.errorHandler({ dumpExceptions: true }));
 });
 
 app.configure('test', function() {
-  app.set('db-uri', 'mongodb://localhost/nodepad-test');
+  app.set('db-uri', 'mongodb://heroku_app5200361@ds033907.mongolab.com:33907/heroku_app5200361');//nodepad-test
 });
 
 app.configure('production', function() {
-  app.set('db-uri', 'mongodb://localhost/nodepad-production');
+  app.set('db-uri', 'mongodb://heroku_app5200361@ds033907.mongolab.com:33907/heroku_app5200361');//nodepad-production
 });
 
 app.configure(function() {
@@ -415,7 +415,7 @@ app.post('/search.:format?', loadUser, function(req, res) {
 });
 
 if (!module.parent) {
-  app.listen(3000);
+  app.listen(process.env.PORT || 3000);
   console.log('Express server listening on port %d, environment: %s', app.address().port, app.settings.env)
   console.log('Using connect %s, Express %s, Jade %s', connect.version, express.version, jade.version);
 }
